@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+<?php
+$conn=mysqli_connect("localhost","root","root") or die("连接失败");
+$db=mysqli_select_db($conn,"news");
+$sql="select * from newsinfo";
+$result=mysqli_query($conn,$sql);
+echo "<ul>";
+while($row=mysqli_fetch_array($result)){
+	echo "<li><a href='shownews.php?xh={$row['id']}'>".mb_substr($row['title'],0,30,'utf-8')."</a></li>";
+};
+echo "</ul>";
+?>
+</body>
+</html>
